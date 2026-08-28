@@ -132,6 +132,32 @@ python test_dateparser.py
 python test_voice_command.py
 ```
 
+## 📸 Application Screenshots
+
+### 🔐 Login
+
+![SmartSpender Login](screenshots/login.png)
+
+### 📊 Dashboard
+
+![SmartSpender Dashboard](screenshots/dashboard.png)
+
+### 💸 Add Expense
+
+![Add Expense](screenshots/add-expense.png)
+
+### 🧾 Receipt Upload & OCR
+
+![Receipt Upload](screenshots/upload-receipt.png)
+
+### 📈 Expense Visualization
+
+![Expense Visualization](screenshots/visualize.png)
+
+### ℹ️ About SmartSpender
+
+![About SmartSpender](screenshots/about.png)
+
 ## 🎯 Project Objective
 
 The objective of SmartSpender is to simplify personal expense management by combining traditional expense tracking with automated receipt processing, OCR, voice-based input, and visual expense analysis.
