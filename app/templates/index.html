@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - SmartSpender{% endblock %}
+
+{% block body_class %}index-page{% endblock %}
+
+{% block content %}
+<!-- Link to the CSS file -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<!-- Display Flash Messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <ul>
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+
+<div class="text-center">
+    <h1 class="display-5">
+        Welcome to SmartSpender, <strong>{{ current_user.username }}</strong>!
+    </h1>
+    <p class="lead">Track, Analyze, and Manage Your Expenses Effortlessly!</p>
+</div>
+
+<!-- Display total expenses -->
+<div class="mt-4">
+    <h3 class="total-expenses">Total Expenses: {{ total | format_currency }}</h3>
+</div>
+
+<!-- Download Report Buttons -->
+<div class="report-buttons">
+    <a href="{{ url_for('main.download_report', report_type='pdf') }}" class="download-report-btn">Download PDF Report</a>
+    <a href="{{ url_for('main.download_report', report_type='csv') }}" class="download-report-btn">Download CSV Report</a>
+</div>
+
+<!-- Search Bar -->
+<form method="GET" action="{{ url_for('main.index') }}" class="mb-4">
+    <input type="text" name="search_query" class="form-control" placeholder="Search by date or description" value="{{ search_query }}">
+    <button type="submit" class="btn btn-primary mt-2">Search</button>
+</form>
+
+<!-- Display expenses table with a blurred box -->
+<div class="mt-5">
+    <h3 class="your-expenses-heading">Your Expenses</h3>
+    <div class="expenses-box">
+        <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Date</th>
+                    <th>Category</th>
+                    <th>Amount</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for expense in expenses %}
+                <tr>
+                    <td>{{ expense.date }}</td>
+                    <td>{{ expense.category }}</td>
+                    <td>{{ expense.amount | format_currency }}</td>
+                    <td>{{ expense.description }}</td>
+                    <td>
+                        <!-- Edit Button -->
+                        <a href="{{ url_for('main.edit_expense', id=expense.id) }}" class="btn btn-warning btn-sm">Edit</a>
+
+                        <!-- Delete Button -->
+                        <a href="{{ url_for('main.delete_expense', id=expense.id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this expense?')">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

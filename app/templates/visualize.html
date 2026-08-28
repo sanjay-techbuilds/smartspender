@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}Visualize - SmartSpender{% endblock %}
+{% block body_class %}visualize-page{% endblock %}
+
+{% block content %}
+  <div class="content">
+    <div class="chart-box">
+        <h2 class="chart-heading">Expense Chart</h2>
+        <div class="chart-container">
+            <canvas id="expenseChart" width="400" height="200"></canvas>
+        </div>
+    </div>
+  </div>
+
+  <!-- Chart.js Script -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let expenseChart = null;
+
+        // Function to fetch expense data and update chart
+        function fetchExpenseData() {
+            fetch('/api/expenses')
+                .then(response => response.json())
+                .then(data => {
+                    // If no expenses data is returned, show a warning and return
+                    if (!data || data.length === 0) {
+                        console.warn("⚠️ No expenses found.");
+                        return;
+                    }
+
+                    // Prepare the data for chart
+                    const categories = data.map(expense => expense.category); // Extract categories
+                    const expenseData = data.map(expense => expense.amount); // Extract amounts
+
+                    if (!expenseChart) {
+                        // Initialize the chart if it hasn't been created yet
+                        const ctx = document.getElementById('expenseChart').getContext('2d');
+                        expenseChart = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: categories,
+                                datasets: [{
+                                    label: 'Expenses by Category',
+                                    data: expenseData,
+                                    backgroundColor: 'rgba(39, 174, 96, 0.6)',
+                                    borderColor: 'rgba(39, 174, 96, 1)',
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                scales: {
+                                    y: {
+                                        beginAtZero: true
+                                    }
+                                }
+                            }
+                        });
+                    } else {
+                        // Update the chart if it already exists
+                        expenseChart.data.labels = categories;
+                        expenseChart.data.datasets[0].data = expenseData;
+                        expenseChart.update();
+                    }
+                })
+                .catch(error => {
+                    console.error("Error fetching expenses:", error);
+                });
+        }
+
+        fetchExpenseData(); // Load chart initially
+        
+        // Refresh chart automatically every 10 seconds (optional)
+        setInterval(fetchExpenseData, 10000);
+    });
+  </script>
+{% endblock %}

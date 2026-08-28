@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Upload Receipt - SmartSpender{% endblock %}
+{% block body_class %}upload-page{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+<div class="card mx-auto" style="max-width: 600px;">
+    <div class="card-body">
+        <h4 class="card-title text-center">Upload Receipt</h4>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert alert-info">
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <form action="{{ url_for('main.upload_receipt') }}" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="receipt" class="form-label">Receipt Image</label>
+                <input type="file" id="receipt" name="receipt" class="form-control" accept="image/*" required>
+            </div>
+            <button type="submit" class="btn btn-success w-100">Upload & Process</button>
+        </form>
+
+        <!-- Display Processed Image -->
+        {% if processed_image %}
+        <div class="mt-4 text-center">
+            <h5>Processed Image</h5>
+            <img src="{{ url_for('static', filename=processed_image) }}" class="img-fluid rounded shadow" alt="Processed Receipt">
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

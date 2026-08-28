@@ -1,0 +1,1009 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #333;
+    line-height: 1.6;
+    height: 100vh; /* Full height */
+    min-height: 100vh; /* Minimum full height */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Backgrounds for Pages */
+body.index-page {
+    background: url("/static/images/bg-index.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+body.add-expense-page {
+    background: url("/static/images/bg-add-expense.jpg") no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevents extra scrolling */
+}
+
+body.edit-expense-page {
+    background: url("/static/images/bg-edit-expense.jpg") no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+body.upload-page {
+    background: url("/static/images/bg-upload.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+body.visualize-page {
+    background: url("/static/images/bg-visualize.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+body.auth-page {
+    background: url("/static/images/bg-auth.jpg") no-repeat center center fixed;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+body.register-page {
+    background: url("/static/images/bg-register.jpg") no-repeat center center fixed;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* About Page Styling */
+body.about-page {
+    background: url("/static/images/bg-about.jpg") no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    color: white;
+    padding: 20px;
+    margin: 0; /* Remove any default margin */
+}
+
+.about-container {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    width: 100%; /* Make the container full width */
+    max-width: 100%; /* Remove the max-width */
+    margin: 0 auto; /* Center the container */
+    text-align: center;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+.about-container h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #f39c12;
+    margin-bottom: 20px;
+}
+
+.about-container p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #ddd;
+}
+
+
+/* Navbar Styling to Match Other Pages */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.navbar a {
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: #b522e6;
+}
+
+.add-expense-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 20px;
+    padding: 40px 30px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    animation: fadeIn 0.6s ease-in-out; /* Keep only fade-in effect */
+    overflow: hidden;
+    z-index: 1;
+    backdrop-filter: blur(8px);
+}
+
+
+/* Add Expense Form */
+.add-expense-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Label Styling */
+.add-expense-form label {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Form Inputs and Select Fields */
+.add-expense-form input,
+.add-expense-form select {
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Input/Select Focus Effect */
+.add-expense-form input:focus,
+.add-expense-form select:focus {
+    box-shadow: 0 0 12px rgba(181, 34, 230, 0.6);
+    transform: translateY(-2px);
+}
+
+/* Heading Styling */
+.add-expense-container h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #b522e6;
+    margin-bottom: 20px;
+}
+
+/* Add Expense Submit Button */
+.add-expense-form button {
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 25px;
+    border: none;
+    background: linear-gradient(90deg, #b522e6, #6f138e);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.add-expense-form button:hover {
+    background: linear-gradient(90deg, #6f138e, #b522e6);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* Navbar */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 10px 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Keep the navbar on top */
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff !important;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.1rem;
+    color: #d4d4d4 !important;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #f39c12 !important;
+}
+
+/* Adjustments for responsive navbar (if using Bootstrap or custom mobile styles) */
+.navbar-toggler {
+    border-color: #d4d4d4;
+}
+
+.navbar-toggler-icon {
+    background-color: #fff;
+}
+
+/* Mobile view - hide nav links and show menu button */
+@media (max-width: 768px) {
+    .navbar-nav {
+        display: none;
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar-nav .nav-link {
+        padding: 10px;
+        border-top: 1px solid #444;
+    }
+
+    .navbar-nav.show {
+        display: block;
+    }
+}
+
+/* Show navbar links when menu is toggled */
+.navbar-toggler.collapsed + .navbar-nav {
+    display: block;
+}
+
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 1rem;
+    border-radius: 10px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.btn-success {
+    background-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+/* Cards */
+.card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Full Page Container */
+.auth-page, .auth-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background: none !important;
+}
+
+/* Background Video */
+.bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.5) blur(2px);
+}
+
+/* Welcome Banner */
+.welcome-banner {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 40px;
+    background: rgba(255, 255, 255, 0.08); /* Softer transparency */
+    backdrop-filter: blur(12px);
+    border-radius: 12px;
+    box-shadow: 0px 0px 12px rgba(255, 255, 255, 0.15);
+    text-align: center;
+}
+
+.welcome-banner h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.welcome-banner h1 span {
+    color: #FFD700; /* Gold neon effect */
+    text-shadow: 0 0 18px rgba(255, 215, 0, 0.9);
+}
+
+/* Form Container */
+.auth-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Glassmorphism Effect */
+.auth-form {
+    padding: 30px;
+    border-radius: 15px;
+    width: 360px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5); /* Slightly lighter for contrast */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    transition: transform 0.3s ease;
+}
+
+/* Form Heading */
+.auth-form h2 {
+    font-size: 22px;
+    color: white;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.7);
+    position: relative;
+}
+
+/* Decorative Line */
+.auth-form h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: yellow;
+    margin: 8px auto 0;
+    border-radius: 2px;
+}
+
+/* Input Fields */
+.input-box {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    outline: none;
+    background: rgba(255, 255, 255, 0.85); /* More solid background */
+    color: black; /* Black text for visibility */
+    transition: all 0.3s ease;
+}
+
+.auth-form input::placeholder {
+    color: rgba(0, 0, 0, 0.5); /* Darker placeholder for visibility */
+}
+
+
+/* Input Hover & Focus Effects */
+.auth-form input:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.auth-form input:focus {
+    border-color: yellow;
+    box-shadow: 0 0 15px rgba(255, 255, 0, 0.8);
+    transform: translateY(-2px);
+    background: white; /* Ensure focus doesn't make it transparent */
+}
+
+/* Icons in Input */
+.input-box i {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.7); /* Adjusted to fit the input */
+    transition: color 0.3s ease;
+}
+
+.input-box input:focus + i {
+    color: yellow;
+}
+
+/* Remember Me and Forgot Password */
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.9); /* Brighter white */
+}
+
+/* Ensure the checkbox is visible */
+.remember-forgot input[type="checkbox"] {
+    accent-color: yellow;
+    transform: scale(1.2); /* Make it slightly bigger */
+}
+
+/* Forgot Password Link */
+.remember-forgot a {
+    text-decoration: none;
+    color: white; /* Make it fully visible */
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.remember-forgot a:hover {
+    color: yellow;
+}
+
+/* Register Link */
+.register-link {
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9); /* Brighter */
+}
+
+.register-link a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    color: yellow;
+    text-shadow: 0 0 5px yellow;
+}
+
+
+/* Submit Button */
+.auth-form button {
+    padding: 14px;
+    font-size: 16px;
+    border-radius: 25px;
+    border: none;
+    background: linear-gradient(90deg, #0057b7, #003c8f); /* Brighter contrast */
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-form button:hover {
+    background: linear-gradient(90deg, #003c8f, #0057b7);
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Fade-in Animation */
+@keyframes fadeInBanner {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Custom styles for total expenses */
+.total-expenses {
+    color: #202020;  /* Change this to your desired color */
+    font-size: 1.8em; /* Optional: Adjust the font size */
+    font-weight: bold; /* Optional: Make the text bold */
+    margin-top: 20px; /* Add margin to give space between text and edges */
+    text-align: center; /* Ensure the text is centered */
+}
+
+/* Expenses Container */
+.expenses-container {
+    position: relative;
+    background: rgba(255, 255, 255, 0.8); /* Slightly more opaque white background */
+    border-radius: 20px;
+    padding: 40px 30px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    animation: fadeIn 0.6s ease-in-out;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%; /* Ensure the container is tall enough */
+}
+
+.your-expenses-heading {
+    color: #202020;  /* Example: Blue color */
+    font-size: 2em;   /* Optional: Adjust the font size */
+    font-weight: bold; /* Optional: Make the text bold */
+    margin-bottom: 20px; /* Optional: Add margin to give space below */
+    text-align: left; /* Ensure the text is centered */
+}
+
+/* Box around the chart */
+.chart-box {
+    background: rgba(255, 255, 255, 0.8); /* Light background to highlight the chart */
+    border-radius: 15px; /* Rounded corners */
+    padding: 20px; /* Space around the chart */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* Soft shadow for depth */
+    margin: 20px auto; /* Center the box and add space from top/bottom */
+    width: 80%; /* Adjust width as needed */
+    max-width: 800px; /* Max width */
+    display: flex;
+    flex-direction: column; /* Ensure heading is above the chart */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Chart container remains the same */
+.chart-container {
+    width: 100%; /* Take full width of the chart box */
+    height: 500px; /* Set a height for the chart */
+}
+
+/* Heading inside the chart box */
+.chart-heading {
+    text-align: center; /* Center the heading */
+    font-size: 2em; /* Larger font size */
+    color: black; /* Set color to black */
+    margin-bottom: 20px; /* Space between heading and chart */
+}
+
+
+/* Hide the navbar on login and register pages */
+body.auth-page .navbar,
+body.register-page .navbar {
+    display: none;
+}
+
+/* Fix Navbar to Top */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #111;
+    padding: 15px 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Push content down to prevent overlap */
+body {
+    padding-top: 70px; /* Push content down from fixed navbar */
+    background: url('../static/images/background.jpg') no-repeat center center/cover;
+    min-height: 100vh; /* Ensure full height */
+}
+
+/* Edit Expense Container */
+.edit-expense-container {
+    position: absolute;  /* Change from fixed to absolute */
+    top: 50%;  /* Center vertically */
+    left: 50%;  /* Center horizontally */
+    transform: translate(-50%, -50%);  /* Adjust centering */
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    color: black;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Title Styling */
+h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: black;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.3);
+    padding: 15px 0;
+}
+
+/* Underline Effect for Title */
+h2::after {
+    content: "";
+    display: block;
+    width: 100px;  /* Increase width */
+    height: 6px;  /* Make it thicker */
+    background-color: #ffcc00; /* Darker yellow */
+    margin: 10px auto 0;
+    border-radius: 3px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5); /* Stronger shadow */
+}
+
+
+/* Edit Expense Form */
+.edit-expense-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Form Labels */
+.edit-expense-form label {
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    text-align: left;
+}
+
+/* Form Inputs & Select Fields */
+.edit-expense-form input,
+.edit-expense-form select {
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: black;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Placeholder Text */
+.edit-expense-form input::placeholder {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+/* Input Focus Effect */
+.edit-expense-form input:focus,
+.edit-expense-form select:focus {
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+    transform: translateY(-2px);
+}
+
+/* Update Expense Button */
+.edit-expense-form .btn-update {
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 25px;
+    border: none;
+    background: linear-gradient(90deg, #ffa500, #ff7800);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(255, 165, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+/* Hover Effect */
+.edit-expense-form .btn-update:hover {
+    background: linear-gradient(90deg, #ff8c00, #ff4500);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(255, 165, 0, 0.6);
+}
+
+/* Cancel Button */
+.edit-expense-container .btn-cancel {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 25px;
+    background: linear-gradient(90deg, #333, #111);
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Cancel Button Hover */
+.edit-expense-container .btn-cancel:hover {
+    background: linear-gradient(90deg, #444, #222);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+}
+
+/* Dropdown Styling */
+select {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: black;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    padding: 8px;
+    border-radius: 5px;
+}
+
+/* Dropdown Options */
+select option {
+    background-color: #eee;
+    color: black;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .edit-expense-container {
+        width: 90%;
+    }
+}
+/* ✅ Scope styles only to the Voice Command page */
+body.voice-page {
+    background: url("/static/images/bg-voice.jpg") no-repeat center center fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* ✅ Voice Instruction Box */
+.voice-instruction-box {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 420px;
+    width: 90%;
+    transition: transform 0.3s ease-in-out;
+}
+
+.voice-instruction-box.show {
+    transform: translateY(0);
+}
+
+/* ✅ Voice Command Button */
+.voice-page .voice-command-btn {
+    margin-top: 20px;
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #6f138e, #b522e6);
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+    z-index: 1000;
+}
+
+.voice-page .voice-command-btn:hover {
+    transform: scale(1.15);
+    background: linear-gradient(135deg, #b522e6, #6f138e);
+}
+
+/* ✅ Active Listening Glow Effect */
+.voice-page .voice-command-btn.listening {
+    animation: pulseEffect 1.5s infinite;
+}
+
+/* ✅ Pulse Animation */
+@keyframes pulseEffect {
+    0% {
+        box-shadow: 0 0 12px rgba(181, 34, 230, 0.9);
+    }
+    50% {
+        box-shadow: 0 0 24px rgba(181, 34, 230, 1);
+    }
+    100% {
+        box-shadow: 0 0 12px rgba(181, 34, 230, 0.9);
+    }
+}
+
+/* ✅ Voice Command Feedback */
+.voice-page .voice-feedback {
+    margin-top: 20px;
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 14px 24px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
+    font-size: 18px;
+    display: none;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+/* ✅ Show feedback when active */
+.voice-page .voice-feedback.active {
+    display: block;
+}
+
+/* ✅ Live Text Box */
+.live-text-box {
+    margin-top: 20px;
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 14px 24px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
+    font-size: 18px;
+    display: none;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+/* ✅ Typing Animation */
+@keyframes typingDots {
+    0% { content: "."; }
+    33% { content: ".."; }
+    66% { content: "..."; }
+    100% { content: ""; }
+}
+
+.live-text-box.typing::after {
+    content: "";
+    animation: typingDots 1.5s infinite;
+}
+
+/* ✅ Show live text box */
+.live-text-box.active {
+    display: block;
+}
+
+/* ✅ Microphone Wave Animation */
+.voice-page .voice-wave {
+    position: absolute;
+    bottom: 100px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    display: none;
+}
+
+.voice-page .voice-wave.active {
+    display: block;
+}
+
+/* ✅ Wave Animation */
+@keyframes waveAnimation {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.3);
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(1.6);
+        opacity: 0;
+    }
+}
+
+.voice-page .voice-wave span {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: rgba(181, 34, 230, 0.3);
+    border-radius: 50%;
+    animation: waveAnimation 1.5s infinite ease-in-out;
+}
+
+/* ✅ Loading Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Container for download buttons */
+.report-buttons {
+    display: flex;
+    justify-content: center; /* Center align buttons */
+    gap: 15px; /* Space between buttons */
+    margin-bottom: 20px; /* Adds spacing below */
+}
+
+/* Style for the Download Report button */
+.download-report-btn {
+    background-color: #2d6a4f; /* Dark green to match theme */
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none; /* Remove underline for anchor buttons */
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.download-report-btn:hover {
+    background-color: #1b4332; /* Slightly darker green on hover */
+    transform: scale(1.05); /* Small zoom effect */
+}
+
+.download-report-btn:active {
+    background-color: #144d32; /* Even darker green when clicked */
+    transform: scale(0.98); /* Slight press-down effect */
+}
+

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Expense - SmartSpender{% endblock %}
+{% block body_class %}edit-expense-page{% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh; margin-top: 60px;">
+    <div class="edit-expense-container">
+        <h2>Edit Expense</h2>
+        <form class="edit-expense-form" method="POST" action="{{ url_for('main.edit_expense', id=expense.id) }}">
+            
+            <div class="form-group">
+                <label for="expense_date">Date</label>
+                <input type="date" id="expense_date" name="expense_date" value="{{ expense.date.strftime('%Y-%m-%d') }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="expense_amount">Amount</label>
+                <input type="number" id="expense_amount" name="expense_amount" value="{{ expense.amount }}" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label for="expense_category">Category</label>
+                <select id="expense_category" name="expense_category" required>
+                    <option value="food" {% if expense.category == 'food' %}selected{% endif %}>Food</option>
+                    <option value="transportation" {% if expense.category == 'transportation' %}selected{% endif %}>Transportation</option>
+                    <option value="utilities" {% if expense.category == 'utilities' %}selected{% endif %}>Utilities</option>
+                    <option value="entertainment" {% if expense.category == 'entertainment' %}selected{% endif %}>Entertainment</option>
+                    <option value="other" {% if expense.category == 'other' %}selected{% endif %}>Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="expense_name">Description</label>
+                <input type="text" id="expense_name" name="expense_name" value="{{ expense.description }}" required>
+            </div>
+
+            <!-- Styled Buttons -->
+            <button type="submit" class="btn-update">Update Expense</button>
+        </form>
+        
+        <!-- Styled Cancel Button -->
+        <a href="{{ url_for('main.index') }}" class="btn-cancel mt-3">Cancel</a>
+    </div>
+</div>
+{% endblock %}
