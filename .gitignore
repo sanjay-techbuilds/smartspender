@@ -37,3 +37,15 @@ Thumbs.db
 # User-uploaded receipt images
 app/static/uploads/
 static/uploads/
+
+# Secret / local configuration files
+*.pem
+*.key
+secrets.json
+config.local.py
+
+# Python tooling
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
